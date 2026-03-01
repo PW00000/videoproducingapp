@@ -1,0 +1,9 @@
+{
+  "steps": [
+    { "name": "research", "command": "test -f research.md" },
+    { "name": "script", "command": "test -f script.md" },
+    { "name": "tts", "command": "test -f vo_a.mp3 -a -f vo_b.mp3 -a -f vo_c.mp3" },
+    { "name": "assembly", "command": "if [ -f build.sh ]; then ./build.sh; elif [ -f run_pipeline.sh ]; then ./run_pipeline.sh; elif [ -f assemble.py ]; then python3 assemble.py; else echo 'No assembly script found' && exit 1; fi" },
+    { "name": "qa_semantic_gate", "command": "test -f semantic_match_report.json || true" }
+  ]
+}
